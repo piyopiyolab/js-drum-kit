@@ -19,7 +19,7 @@ const main = async () => {
     const divIds = Array.from(divDrums).map(div => div.id);
 
     //////////////////////////////////////
-    // Function playDrums
+    // Function playDrums sound/audio
     const playDrums = (event) => {
         const key = event.key.toLowerCase();
         const soundSrc = soundObj[key];
@@ -33,6 +33,8 @@ const main = async () => {
         }
     };
 
+
+
     //////////////////////////////////////
     // Function logKeyPressed
     const logKeyPressed = (event) => {
@@ -40,16 +42,23 @@ const main = async () => {
 
         for (let i = 0; i < divIds.length; i++) {
 
-            if (key === divIds[i]) {
-                divDrums[i].classList.add('bg-purple-400');
-
-                divDrums.forEach((div, index) => {
-                    if (index !== i) {
-                        div.classList.remove('bg-purple-400');
-                    }
-                });
+            if (key === 'a' || key === 'z' || key === 'q') {
+                const index = divIds.indexOf(key);
+                divDrums[index].classList.add('bg-purple-400')
             }
+
+            if (key === 'e' || key === 's' || key === 'd') {
+                const index = divIds.indexOf(key);
+                divDrums[index].classList.add('bg-cyan-200')
+            }
+
+            if (key === 'w' || key === 'x' || key === 'c') {
+                const index = divIds.indexOf(key);
+                divDrums[index].classList.add('bg-yellow-100')
+            }
+
         }
+
     };
 
     //////////////////////////////////////
@@ -60,16 +69,21 @@ const main = async () => {
 
         for (let i = 0; i < divIds.length; i++) {
 
-
-            if (key === divIds[i]) {
-                divDrums[i].classList.remove('bg-purple-400');
-
-                divDrums.forEach((div, index) => {
-                    if (index !== i) {
-                        div.classList.remove('bg-purple-400');
-                    }
-                });
+            if (key === 'a' || key === 'z' || key === 'q') {
+                const index = divIds.indexOf(key);
+                divDrums[index].classList.remove('bg-purple-400')
             }
+
+            if (key === 'e' || key === 's' || key === 'd') {
+                const index = divIds.indexOf(key);
+                divDrums[index].classList.remove('bg-cyan-200')
+            }
+
+            if (key === 'w' || key === 'x' || key === 'c') {
+                const index = divIds.indexOf(key);
+                divDrums[index].classList.remove('bg-yellow-100')
+            }
+
         }
     };
 

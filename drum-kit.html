@@ -31,8 +31,8 @@
     </script>
 </head>
 
-<body class="container mx-auto bg-slate-200 dark:bg-slate-900">
-    <header>
+<body class=" mx-auto bg-slate-200 dark:bg-slate-900">
+    <header class="container">
         <nav class="flex justify-center items-center">
             <!-- Dark mode Nav -->
             <p class="dark:text-gray-500 font-mono">Switch mode :</p>
@@ -49,7 +49,7 @@
         </nav>
         <h1 class="text-4xl text-center mb-12 dark:text-slate-200">Drum kit</h1>
     </header>
-    <main class="flex justify-center">
+    <main class="flex justify-center container">
         <div id="drum-kit-wrapper" class="grid grid-cols-3 gap-4 max-w-sm">
 
             <div id="a" class="flex justify-center items-center mx-auto w-32 h-32 lg:h-58 lg:w-58 bg-purple-600 rounded-lg focus:bg-purple-400">
@@ -81,7 +81,18 @@
             </div>
         </div>
     </main>
-    <footer class="h-10 bg-dark"></footer>
+
+    <!-- Footer -->
+    <footer class="h-10 w-full bg-purple-900 fixed bottom-0 text-center text-slate-200 flex justify-center items-center">
+        <p class="text-sm">Copyrights © 2023 | <span class="font-bold">made with &#9825; by Marion.</span>
+        <div class="pl-4 flex justify-center my-6 gap-4">
+            <a href="https://www.linkedin.com/in/marionpiouceau/"> <i class="text-2xl text-white fa-brands fa-linkedin  hover:scale-125  duration-500" aria-hidden="true"></i>
+            </a>
+            <a href="https://github.com/piyopiyolab"><i class="text-2xl text-white fa-brands fa-github  hover:scale-125  duration-500 " aria-hidden="true"></i></a>
+
+        </div>
+        </p>
+    </footer>
     <script src="app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
 
