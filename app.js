@@ -38,15 +38,35 @@ const main = async () => {
     const logKeyPressed = (event) => {
         const key = event.key.toLowerCase();
 
-
         for (let i = 0; i < divIds.length; i++) {
-            console.log(key, divIds[i])
+
             if (key === divIds[i]) {
-                divDrums[i].classList.add('bg-yellow-200');
+                divDrums[i].classList.add('bg-purple-400');
 
                 divDrums.forEach((div, index) => {
                     if (index !== i) {
-                        div.classList.remove('bg-yellow-200');
+                        div.classList.remove('bg-purple-400');
+                    }
+                });
+            }
+        }
+    };
+
+    //////////////////////////////////////
+    // Function logKeyPressed OUT
+    const logKeyPressedOut = (event) => {
+        const key = event.key.toLowerCase();
+        let newBg = null;
+
+        for (let i = 0; i < divIds.length; i++) {
+
+
+            if (key === divIds[i]) {
+                divDrums[i].classList.remove('bg-purple-400');
+
+                divDrums.forEach((div, index) => {
+                    if (index !== i) {
+                        div.classList.remove('bg-purple-400');
                     }
                 });
             }
@@ -58,10 +78,12 @@ const main = async () => {
 
     divDrums.forEach(div => {
         div.addEventListener('keydown', logKeyPressed);
+        div.addEventListener('keyup', logKeyPressedOut);
         div.addEventListener('keydown', playDrums);
     });
 
     window.addEventListener('keydown', logKeyPressed);
+    window.addEventListener('keyup', logKeyPressedOut);
     window.addEventListener('keydown', playDrums);
 };
 
