@@ -33,12 +33,9 @@ const main = async () => {
         }
     };
 
-
-
     //////////////////////////////////////
-    // Function logKeyPressed
-    const logKeyPressed = (event) => {
-        const key = event.key.toLowerCase();
+    // Function adding background-clas @param Key, s
+    const addBackground = (key) => {
 
         for (let i = 0; i < divIds.length; i++) {
 
@@ -59,14 +56,10 @@ const main = async () => {
 
         }
 
-    };
+    }
 
-    //////////////////////////////////////
-    // Function logKeyPressed OUT
-    const logKeyPressedOut = (event) => {
-        const key = event.key.toLowerCase();
-        let newBg = null;
-
+    //Function removing background-class @param key
+    const removeBackground = (key) => {
         for (let i = 0; i < divIds.length; i++) {
 
             if (key === 'a' || key === 'z' || key === 'q') {
@@ -85,6 +78,46 @@ const main = async () => {
             }
 
         }
+    }
+    //////////////////////////////////////
+    // Function logKeyPressed
+    const logKeyPressed = (event) => {
+        const key = event.key.toLowerCase();
+        addBackground(key);
+
+    };
+    //////////////////////////////////////
+    // Function click
+
+    const clickDrumPad = (event) => {
+
+        const drumKey = event.target.id.toLowerCase();
+        addBackground(drumKey);
+        setTimeout(() => {
+            removeBackground(drumKey);
+        }, 200);
+
+        const soundSrc = soundObj[drumKey];
+        if (soundSrc) {
+            const soundToPlay = new Howl({
+                src: [soundSrc],
+            });
+
+            soundToPlay.play();
+        }
+
+    }
+
+
+
+
+    //////////////////////////////////////
+    // Function logKeyPressed OUT
+    const logKeyPressedOut = (event) => {
+        const key = event.key.toLowerCase();
+        removeBackground(key);
+
+
     };
 
     //////////////////////////////////////
@@ -94,6 +127,7 @@ const main = async () => {
         div.addEventListener('keydown', logKeyPressed);
         div.addEventListener('keyup', logKeyPressedOut);
         div.addEventListener('keydown', playDrums);
+        div.addEventListener('click', clickDrumPad);
     });
 
     window.addEventListener('keydown', logKeyPressed);
